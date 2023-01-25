@@ -42,35 +42,37 @@ const start = () => {
     }])
     .then((response) => {
         fs.writeFile("./generate/README.md", 
-        `#${response.title}
-            ## Description
-            ${response.description}
+        `
+        #${response.title}
+
+        ## Description
+        ${response.description}
             
-            ## Table of Contents
-            [Installation]*#Installation)
-            [usage](#Usage)
-            [license](#License)
-            [Contributing](#Contributing)
-            [Test](#Test)
-            [Questions](#Questions)
+        ## Table of Contents
+        -[Installation]*#Installation)
+        -[usage](#Usage)
+        -[license](#License)
+        -[Contributing](#Contributing)
+        -[Test](#Test)
+        -[Questions](#Questions)
             
-            ## Installation
+        ## Installation 
+        ${response.installation}
             
-            ${response.installation}
+        ## Usage
+        ${response.usage}
             
-            ## Usage
-            ${response.usage}
+        ## License
             
-            ## License
+        ## Contributing,
             
-            ## Contributing,
+        ## Tests
             
-            ## Tests
-            
-            ## Questions
-            [${response.github}](https://github/${response.github})
-            [${response.email}](${response.email})`, (err)=> err ? console.log(err):console.log("json file create"));
-            }
+        ## Questions
+        [${response.github}](https://github/${response.github})
+        [${response.email}](${response.email})`
+        ,(err)=> err ? console.log(err):console.log("json file create"));
+        }
     )}
 
 start();
