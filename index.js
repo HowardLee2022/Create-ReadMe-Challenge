@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-let names =[];
+let badge="";
 
 
 const start = () => {
@@ -28,7 +28,7 @@ const start = () => {
         type:"list",
         name:"license",
         message:"Choose a License",
-        choices:["Yes","No"]
+        choices:["MIT","Mozilla"]
     },
     {
         type:"input",
@@ -41,38 +41,35 @@ const start = () => {
         message:"What is your Email?"
     }])
     .then((response) => {
-        fs.writeFile("./generate/README.md", 
-        `
-        #${response.title}
-
-        ## Description
-        ${response.description}
-            
-        ## Table of Contents
-        -[Installation]*#Installation)
-        -[usage](#Usage)
-        -[license](#License)
-        -[Contributing](#Contributing)
-        -[Test](#Test)
-        -[Questions](#Questions)
-            
-        ## Installation 
-        ${response.installation}
-            
-        ## Usage
-        ${response.usage}
-            
-        ## License
-            
-        ## Contributing,
-            
-        ## Tests
-            
-        ## Questions
-        [${response.github}](https://github/${response.github})
-        [${response.email}](${response.email})`
-        ,(err)=> err ? console.log(err):console.log("json file create"));
+        if(response.license == "MIT"){
+            let badge = "https://img.shields.io/badge/License-MIT-blue";
+        }else if(response.license =="Mozilla"){
+            let badge = "https://img.shields.io/badge/License-Mozilla-orange";
         }
-    )}
-
+        fs.writeFile("./generate/README.md", 
+`
+#${response.title}
+![badge](${badge})
+## Description
+${response.description}            
+## Table of Contents
+-[Installation(#Installation)
+-[usage](#Usage)
+-[license](#License)
+-[Contributing](#Contributing)
+-[Test](#Test)
+-[Questions](#Questions)
+ ## Installation 
+${response.installation}           
+## Usage
+${response.usage}     
+## License
+## Contributing,
+## Tests
+## Questions
+[${response.github}](https://github/${response.github})
+[${response.email}](${response.email})`
+,(err)=> err ? console.log(err):console.log("json file create"));
+        })
+    }
 start();
