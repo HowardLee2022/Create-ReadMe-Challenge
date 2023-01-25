@@ -22,7 +22,12 @@ const start = () => {
     {
         type:"input",
         name:"installation",
-        message:"What is your Project Title?"
+        message:"What is the Installation Instructions?"
+    },
+    {
+        type:"input",
+        name:"contribution",
+        message:"What is the contribution?"
     },
     {
         type:"list",
@@ -37,38 +42,44 @@ const start = () => {
     },
     {
         type:"input",
+        name:"test",
+        message:"Are there any Test?"
+    },
+    {
+        type:"input",
         name:"email",
         message:"What is your Email?"
     }])
     .then((response) => {
         if(response.license == "MIT"){
-            let badge = "https://img.shields.io/badge/License-MIT-blue";
+            badge = "https://img.shields.io/badge/License-MIT-blue";
         }else if(response.license =="Mozilla"){
-            let badge = "https://img.shields.io/badge/License-Mozilla-orange";
+            badge = "https://img.shields.io/badge/License-Mozilla-orange";
         }
         fs.writeFile("./generate/README.md", 
-`
-#${response.title}
+`#${response.title}
 ![badge](${badge})
 ## Description
 ${response.description}            
 ## Table of Contents
--[Installation(#Installation)
--[usage](#Usage)
--[license](#License)
--[Contributing](#Contributing)
--[Test](#Test)
--[Questions](#Questions)
+- [Installation](#Installation)
+- [usage](#Usage)
+- [license](#License)
+- [Contributing](#Contributing)
+- [Test](#Test)
+- [Questions](#Questions)
  ## Installation 
 ${response.installation}           
 ## Usage
 ${response.usage}     
 ## License
-## Contributing,
+## Contributing
+${response.contribution}
 ## Tests
+${response.test}
 ## Questions
 [${response.github}](https://github/${response.github})
-[${response.email}](${response.email})`
+For further question, you can Email Me at:[${response.email}](${response.email})`
 ,(err)=> err ? console.log(err):console.log("json file create"));
         })
     }
