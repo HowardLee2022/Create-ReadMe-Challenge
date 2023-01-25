@@ -14,3 +14,4 @@ Install the inquirier package. Then run file by entering "node index.js" in comm
 ## Features
 Questions
 Creates README file.
+[Walk Through Video](https://drive.google.com/file/d/16IiiqzNz-8A_b2pIU5vutrFhJ2Wicnxe/view)

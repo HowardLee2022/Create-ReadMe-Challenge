@@ -1,7 +1,7 @@
-#howard
-![badge](https://img.shields.io/badge/License-MIT-blue)
+#README Creator
+![badge](https://img.shields.io/badge/License-Mozilla-orange)
 ## Description
-howard            
+This is a application that let user generate a professional README file!            
 ## Table of Contents
 - [Installation](#Installation)
 - [usage](#Usage)
@@ -10,12 +10,16 @@ howard
 - [Test](#Test)
 - [Questions](#Questions)
  ## Installation 
-howard           
+User must install npm inquirer 8.2.4           
 ## Usage
-howard     
+The Usage of this application helps user generate a README file base on the question it will be asking.     
 ## License
-## Contributing,
+Mozilla license. For more information, please visit [Mit License](https://choosealicense.com/licenses/mpl-2.0/)
+## Contributing
+none
 ## Tests
+none
 ## Questions
-[howard](https://github/howard)
-[howard](howard)
+You can visit the Github Page at: [howardlee2022](https://github.com/howardlee2022)
+
+For further question, you can Email Me at: [howard@howard.com](howard@howard.com)

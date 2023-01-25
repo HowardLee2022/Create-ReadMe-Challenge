@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 let badge="";
-
+let badgeInfo="";
 
 const start = () => {
     inquirer.prompt([{
@@ -35,15 +35,16 @@ const start = () => {
         message:"Choose a License",
         choices:["MIT","Mozilla"]
     },
-    {
-        type:"input",
-        name:"github",
-        message:"What is your Github User?"
-    },
+ 
     {
         type:"input",
         name:"test",
         message:"Are there any Test?"
+    },
+    {
+        type:"input",
+        name:"github",
+        message:"What is your Github User?"
     },
     {
         type:"input",
@@ -53,8 +54,10 @@ const start = () => {
     .then((response) => {
         if(response.license == "MIT"){
             badge = "https://img.shields.io/badge/License-MIT-blue";
+            badgeInfo="https://choosealicense.com/licenses/mit/"
         }else if(response.license =="Mozilla"){
             badge = "https://img.shields.io/badge/License-Mozilla-orange";
+            badgeInfo="https://choosealicense.com/licenses/mpl-2.0/"
         }
         fs.writeFile("./generate/README.md", 
 `#${response.title}
@@ -73,13 +76,15 @@ ${response.installation}
 ## Usage
 ${response.usage}     
 ## License
+${response.license} license. For more information, please visit [Mit License](${badgeInfo})
 ## Contributing
 ${response.contribution}
 ## Tests
 ${response.test}
 ## Questions
-[${response.github}](https://github/${response.github})
-For further question, you can Email Me at:[${response.email}](${response.email})`
+You can visit the Github Page at: [${response.github}](https://github.com/${response.github})
+
+For further question, you can Email Me at: [${response.email}](${response.email})`
 ,(err)=> err ? console.log(err):console.log("json file create"));
         })
     }
